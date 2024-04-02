@@ -558,6 +558,7 @@ www.mrcet.com
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
+![image](https://github.com/vamsikrishna272005/OS-Linux-commands-Shell-script/assets/147477015/5ad57f2a-6506-41f8-838f-c3795a371c56)
 
 
 mkdir backupdir
@@ -566,19 +567,60 @@ mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
+![image](https://github.com/vamsikrishna272005/OS-Linux-commands-Shell-script/assets/147477015/a00604de-438b-4a61-9109-3920fbe5f80e)
 
 
 tar -xvf backup.tar
 ## OUTPUT
+![image](https://github.com/vamsikrishna272005/OS-Linux-commands-Shell-script/assets/147477015/42fc8768-ed3e-46e8-abc7-1154879c1f94)
 
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- 
+ ```
+argshift1.sh   file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh    file2         funcex.sh      palindrome.sh
+backupdir      file21        herecheck.txt  psswdperm.sh
+backup.tar.gz  file22        ifcompound.sh  scriptest.sh
+casecheck.sh   file23        ifnested1.sh   strcomp.sh
+cities         forbreak.sh   ifnested.sh    untiltest.sh
+data.dat       forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh   forin1.sh     my-script.sh   whiletest
+exread1.sh     forin2.sh     nc.awk         whiletest.sh
+exread.sh      forin3.sh     newfile
+file1          forinfile.sh  one 
+gunzip backup.tar.gz
+```
 gunzip backup.tar.gz
 ## OUTPUT
+```
+argshift1.sh   file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh    file2         funcex.sh      palindrome.sh
+backupdir      file21        herecheck.txt  psswdperm.sh
+backup.tar.gz  file22        ifcompound.sh  scriptest.sh
+casecheck.sh   file23        ifnested1.sh   strcomp.sh
+cities         forbreak.sh   ifnested.sh    untiltest.sh
+data.dat       forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh   forin1.sh     my-script.sh   whiletest
+exread1.sh     forin2.sh     nc.awk         whiletest.sh
+exread.sh      forin3.sh     newfile
+file1          forinfile.sh  one
+(base) sec@sec-ThinkPad-E15-Gen-4:~/os/ex01/backupdir$ gunzip backup.tar.gz
+(base) sec@sec-ThinkPad-E15-Gen-4:~/os/ex01/backupdir$ ls
+argshift1.sh  file11        fornested1.sh  OS-Linux-commands-Shell-script
+argshift.sh   file2         funcex.sh      palindrome.sh
+backupdir     file21        herecheck.txt  psswdperm.sh
+backup.tar    file22        ifcompound.sh  scriptest.sh
+casecheck.sh  file23        ifnested1.sh   strcomp.sh
+cities        forbreak.sh   ifnested.sh    untiltest.sh
+data.dat      forctype.sh   iftest.sh      urllist.txt
+elifcheck.sh  forin1.sh     my-script.sh   whiletest
+exread1.sh    forin2.sh     nc.awk         whiletest.sh
+exread.sh     forin3.sh     newfile
+file1         forinfile.sh  one
 
+```
  
 # Shell Script
 ```
@@ -638,25 +680,45 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
+```
+./scriptest.sh: line 1: #!/bin/sh: No such file or directory
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  1#
+The $$ is  14337
+    PID TTY          TIME CMD
+  13614 pts/1    00:00:00 bash
+  14337 pts/1    00:00:00 bash
+  14340 pts/1    00:00:00 ps
+```
  
 ls file1
 ## OUTPUT
 
+```
+file1
 echo $?
+```
 ## OUTPUT 
+0
 ./one
 bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
- 
+ ```
+127
 abcd
- 
+ ```
 echo $?
  ## OUTPUT
 
-
+127
  
 # mis-using string comparisons
 
@@ -694,7 +756,11 @@ chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
+```
+./strcomp.sh: line 1: #!/bin/bash: No such file or directory
+baseball is less than hockey
+./strcomp.sh: line 10: ^d: command not found
+```
 
 # check file ownership
 cat < psswdperm.sh 
@@ -710,7 +776,7 @@ fi
 ```
 
 cat psswdperm.sh 
-```bash
+```
 /#!/bin/bash
 if [ -O /etc/passwd ]
 then
@@ -724,7 +790,7 @@ fi
 
 # check if with file location
 cat>ifnested.sh 
-```bash
+```
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -767,12 +833,17 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
-
+```
+./ifnested.sh: line 1: #!/bin/bash: No such file or directory
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+./ifnested.sh: line 18: ^d: command not found
+```
 
 # using numeric test comparisons
 cat > iftest.sh 
-```bash
+```
 \#!/bin/bash
 val1=10
 val2=11
@@ -810,11 +881,11 @@ fi
 $ chmod 755 iftest.sh
  
 $ ./iftest.sh 
-##OUTPUT
+## OUTPUT
 
 # check if a file
 cat > ifnested.sh 
-```bash
+```
 \#!/bin/bash
 if [ -e $HOME ]
 then
@@ -859,11 +930,11 @@ fi
 $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
-##OUTPUT
+## OUTPUT
 
 # looking for a possible value using elif
 cat elifcheck.sh 
-```bash
+```
 \#!/bin/bash
 if [ $USER = Ram ]
 then
@@ -888,7 +959,10 @@ $ chmod 755 elifcheck.sh
  
 $ ./elifcheck.sh 
 ## OUTPUT
-
+```
+./elifcheck.sh: line 1: #!/bin/bash: No such file or directory
+Sorry, you are not allowed here
+```
 
 # testing compound comparisons
 cat> ifcompound.sh 
@@ -904,10 +978,13 @@ fi
 $ chmod 755 ifcompound.sh
 $ ./ifcompound.sh 
 ## OUTPUT
-
+```
+./ifcompound.sh: line 1: #!/bin/bash: No such file or directory
+The file exists and you can write to it
+```
 # using the case command
 cat >casecheck.sh 
-```bash
+```
 case $USER in
 Ram | Robert)
 echo "Welcome, $USER"
@@ -923,9 +1000,9 @@ esac
 $ chmod 755 casecheck.sh 
  
 $ ./casecheck.sh 
- 
+## output
 cat > whiletest
-```bash
+```
 #!/bin/bash
 #while command test
 var1=10
@@ -938,7 +1015,20 @@ done
 $ chmod 755 whiletest.sh
  
 $ ./whiletest.sh
- 
+## output
+```
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+```
  
 cat untiltest.sh 
 ```bash
@@ -951,11 +1041,17 @@ var1=$[ $var1 - 25 ]
 done
 ``` 
 $ chmod 755 untiltest.sh
- 
- 
+## output
+```
+./untiltest.sh: line 1: #using: command not found
+100
+75
+50
+25
+```
  
 cat forin1.sh 
-```bash
+```
 \#!/bin/bash
 \#basic for command
 for test in Alabama Alaska Arizona Arkansas California Colorado
@@ -966,7 +1062,19 @@ done
  
 $ chmod 755 forin1.sh
  
- 
+## output
+```
+./forin1.sh: line 1: #!/bin/bash: No such file or directory
+./forin1.sh: line 2: #basic: command not found
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+cat forin2.sh
+
+```
 cat forin2.sh 
 ```bash
 \#!/bin/bash
@@ -991,7 +1099,14 @@ done
 $ chmod 755 forin2.sh
  
 $ ./forin2.sh 
- 
+## output
+```
+./forin2.sh: line 1: #!/bin/bash: No such file or directory
+./forin2.sh: line 2: #: command not found
+“word:I”
+“word:dont know if thisll”
+“word:work”
+```
 cat forin3.sh 
 ```bash
 \#!/bin/bash
@@ -1002,7 +1117,7 @@ echo "word:$test"
 done
 ```
 $ ./forin3.sh 
- 
+## output
 cat forin1.sh 
 ```bash
 #!/bin/bash
@@ -1015,6 +1130,14 @@ done
 $ chmod 755 forin1.sh
 
 ## OUTPUT
+```
+The next state is Alabama
+The next state is Alaska
+The next state is Arizona
+The next state is Arkansas
+The next state is California
+The next state is Colorado
+```
 cat forinfile.sh 
 ```bash
 #!/bin/bash
@@ -1063,7 +1186,9 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype1.sh 
 ## OUTPUT
-
+```
+bash: ./forctype1.sh: No such file or directory
+```
 cat fornested1.sh 
 ```bash
 #!/bin/bash
@@ -1082,7 +1207,20 @@ $ chmod 755 fornested1.sh
 $ ./fornested1.sh 
  ## OUTPUT
 
- 
+```
+Starting loop 1:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting loop 2:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting loop 3:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+```
 cat forbreak.sh 
 ```bash
 #!/bin/bash
@@ -1097,8 +1235,9 @@ echo "Iteration number: $var1"
 done
 echo "The for loop is completed“
 ```
-## OUTPUT
-
+## breaking out of a for loop
+for var1 in 1 2 3 4 5 do if [ $var1 -eq 3 ] then continue fi echo "Iteration number: 
+ chmod 755 forbreak.sh
 $ chmod 755 forbreak.sh
  
 $ ./forbreak.sh 
@@ -1123,9 +1262,12 @@ $ chmod 755 forcontinue.sh
  
 $ ./forcontinue.sh 
 ## OUTPUT
- 
+```
+Enter your name: Venkatanathan
+Hello Venkatanathan, welcome to my program.
+```
 cat exread.sh 
-```bash
+```
 #!/bin/bash
 # testing the read command
 echo -n "Enter your name: "
@@ -1137,10 +1279,13 @@ $ chmod 755 exread.sh
  
 $ ./exread.sh 
 ## OUTPUT
-
+```
+Enter your name: Venkatanathan
+Hello Venkatanathan, welcome to my program. 
+```
 
  cat exread1.sh
-```bash
+```
 #!/bin/bash
 # testing the read command
 read -p "Enter your name: " name
@@ -1149,13 +1294,16 @@ echo "Hello $name, welcome to my program. “
 $ chmod 755 exread1.sh 
 
 ## OUTPUT
-
-
+```
+Enter your name: Venkatanathan
+./exread1.sh: line 4: unexpected EOF while looking for matching `"'
+./exread1.sh: line 5: syntax error: unexpected end of file
+```
 
 $ ./exread1.sh 
  
 cat funcex.sh
-```bash
+```
 #!/bin/bash
 # trying to access script parameters inside a function
 function func {
@@ -1170,14 +1318,17 @@ echo "Usage: badtest1 a b"
 fi
 ```
 ## OUTPUT
+```
  ./funcex.sh 
+bash: ./funcex.sh: Permission denied
+```
 
- 
+```
  ./funcex.sh 1 2
-
- 
+bash: ./funcex.sh: Permission denied
+```
 cat argshift.sh
-```bash
+```
 #!/bin/bash 
  while (( "$#" )); do 
   echo $1 
@@ -1187,10 +1338,26 @@ done
 $ chmod 777 argshift.sh
 
 ## OUTPUT
+```
++ ((  3  ))
++ echo 1
+1
++ shift
++ ((  2  ))
++ echo 2
+2
++ shift
++ ((  1  ))
++ echo 3
+3
++ shift
++ ((  0  ))
++ set +x
+```
 $ ./argshift.sh 1 2 3
  
  cat argshift1.sh
-```bash
+```
  #/bin/bash 
  # store arguments in a special array 
 args=("$@") 
@@ -1207,7 +1374,7 @@ $ chmod 777 argshift.sh
 $ ./argshift.sh 1 2 3
  
 cat argshift.sh
-```bash
+```
 #!/bin/bash 
 set -x 
 while (( "$#" )); do 
@@ -1217,8 +1384,23 @@ done
 set +x
 ```
 ## OUTPUT
+```
  ./argshift.sh 1 2 3
- 
+ + ((  3  ))
++ echo 1
+1
++ shift
++ ((  2  ))
++ echo 2
+2
++ shift
++ ((  1  ))
++ echo 3
+3
++ shift
++ ((  0  ))
++ set +x
+``` 
  
 cat > nc.awk
 ```bash
@@ -1249,9 +1431,23 @@ ubcdfghj
 ```
 awk -f nc.awk data.dat
 ## OUTPUT 
- 
+```
+ 7 	 bcdfghj
+8 	 abcdfghj
+7 	 bcdfghj
+8 	 ebcdfghj
+7 	 bcdfghj
+8 	 ibcdfghj
+7 	 bcdfghj
+8 	 obcdfghj
+7 	 bcdfghj
+8 	 ubcdfghj
+total characters 75
+Number of Lines are 10
+No of Words count: 10
+```
 cat > palindrome.sh
-```bash
+```
 #num=545
 echo "Enter the number"
 read num
@@ -1276,7 +1472,11 @@ else
 fi
 ```
 ## OUTPUT 
-
+```
+Enter the number
+45
+Number is NOT palindrome
+```
 
 # RESULT:
 The Commands are executed successfully.
